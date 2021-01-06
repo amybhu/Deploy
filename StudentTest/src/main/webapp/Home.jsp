@@ -24,7 +24,7 @@
 <body>
 <center>
 <div>
-<h1>Insert Student Details:</h1>
+<h1>Provide Student Details:</h1>
 <form action="welcome">
 <table  class="table">
 <tr>
