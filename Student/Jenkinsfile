@@ -6,7 +6,7 @@ pipeline{
 			steps{
 				
 					sh '''
-          cd StudentTest
+          cd Student
           mvn compile 
     '''
 		    }
@@ -15,7 +15,7 @@ pipeline{
 	    stage('QA test Stage'){
 			steps{
 					sh '''
-          cd StudentTest
+          cd Student
           mvn clean test package sonar:sonar
     '''
 				}
@@ -23,12 +23,12 @@ pipeline{
 		     stage('Junit test Stage'){
 			steps{
 				
-				junit 'StudentTest/target/surefire-reports/*.xml'
+				junit 'Student/target/surefire-reports/*.xml'
 		    }
 	    }
 	  stage('ansible-deploy'){
 	      steps{
-	          ansiblePlaybook credentialsId: 'Ansible', disableHostKeyChecking: true, installation: 'AnsibleTest', inventory: 'StudentTest/dev.inv', playbook: 'Student/Test.yml'
+	          ansiblePlaybook credentialsId: 'Ansible', disableHostKeyChecking: true, installation: 'AnsibleTest', inventory: 'Student/dev.inv', playbook: 'Student/Test.yml'
 	      }
 	  }
 	    
